@@ -29,7 +29,7 @@ Home
     <ol class="list-group list-group-numbered">
         <li class="list-group-item d-flex justify-content-between align-items-start">            <h5>{{games.title}}</h5>
             <p>{{games.summary}}</p>
-            <a class="btn btn-success" href="{% url 'detail_view' games.id %}">View the {{games}}</a>
+            <a class="btn btn-success" href="{% url 'detail_view' games.id %}">View and Edit {{games}}</a>
         </li>
     </ol>
     {% endfor %}

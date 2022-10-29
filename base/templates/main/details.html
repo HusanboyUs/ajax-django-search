@@ -3,4 +3,12 @@
 {% block content %}
 <h1>{{obj.title}}</h1>
 <p>{{obj.summary}}</p>
+
+<form action="" method="post">
+    <div class="input-group mb-3">
+        {%csrf_token%}
+        {{form.as_p}}
+        <button type="submit">Edit</button>
+    </div>
+</form>
 {% endblock content %}

@@ -1,8 +1,7 @@
-
-from telnetlib import GA
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.http import JsonResponse
 from .models import Games
+from .forms import GameEditForms
 
 def homeView(request):
     games=Games.objects.all()
@@ -35,4 +34,14 @@ def search_results(request):
 
 def game_detail_view(request, pk):
     obj=get_object_or_404(Games, pk=pk)
-    return render(request, 'main/details.html', {'obj':obj})
+    form=GameEditForms(instance=obj)
+    if request.method=='POST':
+        form=GameEditForms(request.POST,instance=obj)
+        if form.is_valid():
+            form.save()
+        return redirect('/')    
+    context={'obj':obj, 'form':form}        
+    return render(request, 'main/details.html', context)
+
+
+    
