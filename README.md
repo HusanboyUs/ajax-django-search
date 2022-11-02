@@ -1,2 +1,2 @@
 # ajax-django-search
-Ajax Django Search
+Ajax Django Search.
